@@ -1,0 +1,9 @@
+{
+  "domain": "prism_ha",
+  "name": "Prism HA",
+  "version": "0.0.1",
+  "documentation": "https://github.com/g1usepp3/prism-ha",
+  "issue_tracker": "https://github.com/g1usepp3/prism-ha/issues",
+  "codeowners": ["@g1usepp3"],
+  "config_flow": false
+}
