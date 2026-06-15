@@ -1,7 +1,7 @@
 import logging
 from homeassistant import config_entries
 from voluptuous import Schema, Required
-from . import DOMAIN
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
