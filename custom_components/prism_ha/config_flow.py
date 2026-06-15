@@ -1,7 +1,6 @@
 import logging
 from homeassistant import config_entries
-from homeassistant.helpers import selector
-from homeassistant.helpers.config_validation import cv, Schema, Required
+from voluptuous import Schema, Required
 from . import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
