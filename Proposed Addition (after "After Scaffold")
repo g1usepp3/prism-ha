@@ -1,0 +1,3 @@
+- Confirm which preferred cards are actually installed in HA sandbox
+- Create minimal YAML dashboard using existing cards to test composition
+- Document any missing dependencies before building custom components
