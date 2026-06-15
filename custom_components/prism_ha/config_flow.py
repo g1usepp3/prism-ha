@@ -29,15 +29,47 @@ class PrismConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 class PrismOptionsFlow(config_entries.OptionsFlow):
     async def async_step_init(self, user_input=None):
         if user_input is not None:
-            return self.async_create_entry(title="", data=user_input)
+            return self.async_show_form(
+                step_id="add_mapping",
+                data_schema=self.build_add_mapping_schema(user_input.get("mappings", []))
+            )
 
+        # Get current mappings from config entry
+        mappings = user_input or {}
+        
         return self.async_show_form(
             step_id="init",
-            data_schema=Schema({
-                Required("calendar_entity"): str,
-                Required("person_name"): str,
-                "color_override": str
-            })
+            data_schema=Schema({})
+        )
+
+    def build_add_mapping_schema(self, existing_mappings):
+        """Build schema for adding a single mapping row."""
+        import homeassistant.helpers.config_validation as cv
+        
+        # Get available calendar entities and person entities from hass
+        calendars = self.hass.states.async_entity_ids("calendar")
+        persons = self.hass.states.async_entity_ids("person")
+
+        return Schema({
+            Required("calendar_entity"): str,
+            Required("calendar_label"): str,
+            Required("person_entity"): str
+        })
+
+    async def async_step_add_mapping(self, user_input=None):
+        if user_input is not None:
+            # Add the new mapping to the list
+            existing_mappings = self._options.get("mappings", [])
+            existing_mappings.append(user_input)
+            
+            return self.async_create_entry(
+                title="",
+                data={"mappings": existing_mappings}
+            )
+
+        return self.async_show_form(
+            step_id="add_mapping",
+            data_schema=self.build_add_mapping_schema(self._options.get("mappings", []))
         )
 
 

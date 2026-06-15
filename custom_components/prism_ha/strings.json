@@ -7,9 +7,13 @@
         "data": ["household_name"]
       },
       "init": {
-        "title": "Calendar Mapping Options",
-        "description": "Configure calendar entity mappings for your family members.",
-        "data": ["calendar_entity", "person_name", "color_override"]
+        "title": "Calendar Mappings",
+        "description": "Add calendar-person mappings for family members. You can add multiple rows."
+      },
+      "add_mapping": {
+        "title": "Add Calendar Mapping",
+        "description": "Select a calendar entity, assign a label, and link to a person.",
+        "data": ["calendar_entity", "calendar_label", "person_entity"]
       }
     },
     "abort": {
