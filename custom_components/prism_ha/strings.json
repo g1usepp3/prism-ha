@@ -8,12 +8,11 @@
       },
       "init": {
         "title": "Calendar Mappings",
-        "description": "Add calendar-person mappings for family members. You can add multiple rows."
+        "description": "Configure calendar-person mappings. Existing:\n{mappings}\n\nClick 'Add Mapping' to add a new one."
       },
       "add_mapping": {
         "title": "Add Calendar Mapping",
-        "description": "Select a calendar entity, assign a label, and link to a person.",
-        "data": ["calendar_entity", "calendar_label", "person_entity"]
+        "description": "Select a calendar entity, assign a label, and link to a person.\nAvailable calendars: {calendars}\nAvailable persons: {persons}"
       }
     },
     "abort": {

@@ -15,11 +15,15 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Set up Prism HA from a config entry."""
     _LOGGER.debug("Setting up Prism HA for %s", entry.entry_id)
 
-    # Initialize any necessary data structures here
+    # Initialize mappings if not exists in options
+    if "mappings" not in entry.options:
+        hass.config_entries.async_update_entry(entry, options={**entry.options, "mappings": []})
+
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = {
         "household_name": entry.data.get("household_name"),
-        "calendars": []
+        "calendars": [],
+        "mappings": entry.options.get("mappings", [])
     }
 
     return True
