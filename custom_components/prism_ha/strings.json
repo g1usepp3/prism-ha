@@ -2,25 +2,32 @@
   "config": {
     "step": {
       "user": {
-        "title": "Prism Household Setup",
-        "description": "Enter your household name for Prism HA.",
-        "data": ["household_name"]
-      },
-      "init": {
-        "title": "Calendar Mappings",
-        "description": "Configure calendar-person mappings. Existing:\n{mappings}\n\nClick 'Add Mapping' to add a new one."
-      },
-      "add_mapping": {
-        "title": "Add Calendar Mapping",
-        "description": "Select a calendar entity, assign a label, and link to a person.\nAvailable calendars: {calendars}\nAvailable persons: {persons}"
+        "title": "Prism HA Setup",
+        "description": "Configure Prism HA integration"
       }
     },
     "abort": {
-      "already_configured": "This Prism household is already configured."
+      "already_configured": "Prism HA is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Prism HA Options",
+        "description": "Configure calendar and person mappings"
+      }
     },
-    "error": {
-      "unknown": "An unknown error occurred. Please try again.",
-      "cannot_connect": "Failed to connect to Home Assistant calendar entities."
+    "abort": {
+      "no_entry": "No config entry found for Prism HA"
+    }
+  },
+  "entity": {
+    "prism_ha": {
+      "state_attributes": {
+        "mappings": {
+          "name": "Mappings"
+        }
+      }
     }
   }
 }
